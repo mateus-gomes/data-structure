@@ -103,7 +103,7 @@ public class MyLinkedList {
         myLinkedList.append(16);
         myLinkedList.prepend(0);
         myLinkedList.insert(3, 99);
-        myLinkedList.delete(1);
+        myLinkedList.delete(4);
 
         myLinkedList.print();
     }
