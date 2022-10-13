@@ -43,9 +43,9 @@ public class MyLinkedList {
         Node newNode = new Node(value);
         Node previousNode = findPreviousNode(index);
 
-        Node auxiliarNode = previousNode.getNext();
+        Node auxiliaryNode = previousNode.getNext();
         previousNode.setNext(newNode);
-        newNode.setNext(auxiliarNode);
+        newNode.setNext(auxiliaryNode);
         length++;
     }
 
