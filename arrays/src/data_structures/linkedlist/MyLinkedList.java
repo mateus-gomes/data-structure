@@ -12,6 +12,14 @@ public class MyLinkedList {
         this.length = 1;
     }
 
+    public Node getHead() {
+        return head;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
     public void append(Object value){
         Node newTail = new Node(value);
         Node oldTail = tail;
@@ -86,6 +94,23 @@ public class MyLinkedList {
         return null;
     }
 
+    // Course solution
+    public void reverse(){
+        Node first = head;
+        Node second = first.getNext();
+        tail = head;
+
+        while(second != null){
+            Node temporaryNode = second.getNext();
+            second.setNext(first);
+            first = second;
+            second = temporaryNode;
+        }
+
+        head.setNext(null);
+        head = first;
+    }
+
     public void print(){
         Node currentNode = head;
 
@@ -105,6 +130,11 @@ public class MyLinkedList {
         myLinkedList.insert(3, 99);
         myLinkedList.delete(4);
 
+        myLinkedList.print();
+
+        System.out.println("=================");
+
+        myLinkedList.reverse();
         myLinkedList.print();
     }
 }
