@@ -1,5 +1,7 @@
 package data_structures.trees.binarysearch;
 
+import java.util.ArrayList;
+
 public class BinarySearchTree {
 
     private BinaryTreeNode rootNode;
@@ -131,6 +133,32 @@ public class BinarySearchTree {
         return null;
     }
 
+    public ArrayList<Object> breadthFirstSearch(){
+        BinaryTreeNode currentNode = rootNode;
+        ArrayList<Object> list = new ArrayList<>();
+        ArrayList<BinaryTreeNode> queue = new ArrayList<>();
+
+        queue.add(currentNode);
+        while(!queue.isEmpty()){
+            currentNode = queue.get(0);
+            list.add(currentNode.getValue());
+            BinaryTreeNode leftNode = currentNode.getLeft();
+            BinaryTreeNode rightNode = currentNode.getRight();
+
+            if(leftNode != null){
+                queue.add(leftNode);
+            }
+
+            if(rightNode != null){
+                queue.add(rightNode);
+            }
+
+            queue.remove(0);
+        }
+
+        return list;
+    }
+
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree(9);
 
@@ -144,8 +172,8 @@ public class BinarySearchTree {
 
 //        System.out.println(tree.lookup(20));
 
-        tree.remove(9);
+//        tree.remove(9);
 
-        System.out.println(tree.getRootNode());
+        System.out.println(tree.breadthFirstSearch());
     }
 }
