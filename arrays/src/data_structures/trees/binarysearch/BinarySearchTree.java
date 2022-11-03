@@ -159,6 +159,29 @@ public class BinarySearchTree {
         return list;
     }
 
+    public ArrayList<Object> breadthFirstSearchRecursive(ArrayList<BinaryTreeNode> queue, ArrayList<Object> list){
+        if(queue.isEmpty()){
+            return list;
+        }
+
+        BinaryTreeNode currentNode = queue.get(0);
+        BinaryTreeNode leftNode = currentNode.getLeft();
+        BinaryTreeNode rightNode = currentNode.getRight();
+
+        list.add(currentNode.getValue());
+
+        if(leftNode != null){
+            queue.add(leftNode);
+        }
+
+        if(rightNode != null){
+            queue.add(rightNode);
+        }
+
+        queue.remove(0);
+        return breadthFirstSearchRecursive(queue, list);
+    }
+
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree(9);
 
@@ -174,6 +197,9 @@ public class BinarySearchTree {
 
 //        tree.remove(9);
 
-        System.out.println(tree.breadthFirstSearch());
+        ArrayList<Object> list = new ArrayList<>();
+        ArrayList<BinaryTreeNode> queue = new ArrayList<>();
+        queue.add(tree.getRootNode());
+        System.out.println(tree.breadthFirstSearchRecursive(queue, list));
     }
 }
