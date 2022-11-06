@@ -187,7 +187,6 @@ public class BinarySearchTree {
     }
 
     private ArrayList<Object> traverseInOrder(BinaryTreeNode node, ArrayList<Object> list){
-        System.out.println(node.getValue());
         if(node.getLeft() != null){
             traverseInOrder(node.getLeft(), list);
         }
