@@ -182,6 +182,24 @@ public class BinarySearchTree {
         return breadthFirstSearchRecursive(queue, list);
     }
 
+    public ArrayList<Object> DFSInOrder(){
+        return traverseInOrder(rootNode, new ArrayList<>());
+    }
+
+    private ArrayList<Object> traverseInOrder(BinaryTreeNode node, ArrayList<Object> list){
+        System.out.println(node.getValue());
+        if(node.getLeft() != null){
+            traverseInOrder(node.getLeft(), list);
+        }
+        list.add(node.getValue());
+
+        if(node.getRight() != null){
+            traverseInOrder(node.getRight(), list);
+        }
+
+        return list;
+    }
+
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree(9);
 
@@ -197,9 +215,11 @@ public class BinarySearchTree {
 
 //        tree.remove(9);
 
-        ArrayList<Object> list = new ArrayList<>();
-        ArrayList<BinaryTreeNode> queue = new ArrayList<>();
-        queue.add(tree.getRootNode());
-        System.out.println(tree.breadthFirstSearchRecursive(queue, list));
+//        ArrayList<Object> list = new ArrayList<>();
+//        ArrayList<BinaryTreeNode> queue = new ArrayList<>();
+//        queue.add(tree.getRootNode());
+//        System.out.println(tree.breadthFirstSearchRecursive(queue, list));
+
+        System.out.println(tree.DFSInOrder());
     }
 }
