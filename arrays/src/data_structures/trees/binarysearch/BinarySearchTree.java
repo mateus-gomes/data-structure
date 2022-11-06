@@ -199,6 +199,23 @@ public class BinarySearchTree {
         return list;
     }
 
+    public ArrayList<Object> DFSPreOrder(){
+        return traversePreOrder(rootNode, new ArrayList<>());
+    }
+
+    private ArrayList<Object> traversePreOrder(BinaryTreeNode node, ArrayList<Object> list){
+        list.add(node.getValue());
+        if(node.getLeft() != null){
+            traversePreOrder(node.getLeft(), list);
+        }
+
+        if(node.getRight() != null){
+            traversePreOrder(node.getRight(), list);
+        }
+
+        return list;
+    }
+
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree(9);
 
@@ -219,6 +236,7 @@ public class BinarySearchTree {
 //        queue.add(tree.getRootNode());
 //        System.out.println(tree.breadthFirstSearchRecursive(queue, list));
 
-        System.out.println(tree.DFSInOrder());
+//        System.out.println(tree.DFSInOrder());
+        System.out.println(tree.DFSPreOrder());
     }
 }
